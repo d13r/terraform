@@ -1,0 +1,17 @@
+.idea/
+.terraform/
+
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+*.tfvars
+
+!/terraform-state-bucket/terraform.tfstate
+
+.env
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+crash.log
