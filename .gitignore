@@ -8,7 +8,7 @@
 
 !/terraform-state-bucket/terraform.tfstate
 
-.env
+backend.tf
 override.tf
 override.tf.json
 *_override.tf

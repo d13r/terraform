@@ -1,0 +1,13 @@
+terraform {
+  backend "s3" {
+
+    bucket = "d13r-terraform-state"
+    key    = "terraform.tfstate"
+    region = "eu-west-1" # Ireland
+
+    # Copy these from terraform.tfvars, since it doesn't supports vars here :-\
+    access_key = ""
+    secret_key = ""
+
+  }
+}

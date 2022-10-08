@@ -12,6 +12,6 @@ terraform {
 provider "aws" {
   access_key          = var.aws_iam_access_key
   secret_key          = var.aws_iam_secret_key
-  region              = "eu-west-1"
+  region              = "eu-west-1" # Ireland
   allowed_account_ids = ["956547487034"] # d13r
 }
