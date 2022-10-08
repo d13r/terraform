@@ -5,7 +5,7 @@ resource "cloudflare_record" "glados_djm_me_A" {
   value   = "192.168.5.2"
 }
 
-resource "cloudflare_record" "glados_djm_me_SPF" {
+resource "cloudflare_record" "glados_djm_me_TXT_spf" {
   zone_id = cloudflare_zone.djm_me.id
   name    = "glados"
   type    = "TXT"

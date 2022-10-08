@@ -40,7 +40,7 @@ resource "cloudflare_record" "summer_djm_me_AAAA" {
   value   = hcloud_server.summer.ipv6_address
 }
 
-resource "cloudflare_record" "summer_djm_me_SPF" {
+resource "cloudflare_record" "summer_djm_me_TXT_spf" {
   zone_id = cloudflare_zone.djm_me.id
   name    = "summer"
   type    = "TXT"
