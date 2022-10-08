@@ -8,5 +8,6 @@ aws_iam_secret_key = ""
 # https://dash.cloudflare.com/profile/api-tokens
 # Include:
 # - Account > Account Settings > Edit (All accounts)
+# - Zone > DNS > Edit (All zones)
 # - Zone > Zone > Edit (All zones)
 cloudflare_api_token = ""
