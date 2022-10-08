@@ -9,6 +9,7 @@ resource "hcloud_server" "summer" {
   rebuild_protection = true
 
   firewall_ids = [hcloud_firewall.standard_linux.id]
+  ssh_keys     = [hcloud_ssh_key.dave.id]
 
   public_net {
     ipv4_enabled = true
@@ -18,6 +19,10 @@ resource "hcloud_server" "summer" {
   network {
     network_id = hcloud_network.djm_private.id
     ip         = "10.3.56.2"
+  }
+
+  lifecycle {
+    ignore_changes = [ssh_keys]
   }
 }
 
