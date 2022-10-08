@@ -1,6 +1,6 @@
 resource "cloudflare_record" "djm_me_CAA_iodef" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = cloudflare_zone.djm_me.zone
+  name    = "@"
   type    = "CAA"
 
   data {
@@ -12,7 +12,7 @@ resource "cloudflare_record" "djm_me_CAA_iodef" {
 
 resource "cloudflare_record" "djm_me_CAA_letsencrypt" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = cloudflare_zone.djm_me.zone
+  name    = "@"
   type    = "CAA"
 
   data {
@@ -24,7 +24,7 @@ resource "cloudflare_record" "djm_me_CAA_letsencrypt" {
 
 resource "cloudflare_record" "davejamesmiller_com_CAA_iodef" {
   zone_id = cloudflare_zone.davejamesmiller_com.id
-  name    = cloudflare_zone.davejamesmiller_com.zone
+  name    = "@"
   type    = "CAA"
 
   data {
@@ -36,7 +36,7 @@ resource "cloudflare_record" "davejamesmiller_com_CAA_iodef" {
 
 resource "cloudflare_record" "davejamesmiller_com_CAA_letsencrypt" {
   zone_id = cloudflare_zone.davejamesmiller_com.id
-  name    = cloudflare_zone.davejamesmiller_com.zone
+  name    = "@"
   type    = "CAA"
 
   data {

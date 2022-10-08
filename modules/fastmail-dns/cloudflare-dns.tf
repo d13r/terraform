@@ -4,7 +4,7 @@
 # Standard Mail
 resource "cloudflare_record" "mx_10" {
   zone_id  = var.cloudflare_zone.id
-  name     = var.cloudflare_zone.zone
+  name     = "@"
   type     = "MX"
   priority = 10
   value    = "in1-smtp.messagingengine.com"
@@ -12,7 +12,7 @@ resource "cloudflare_record" "mx_10" {
 
 resource "cloudflare_record" "mx_20" {
   zone_id  = var.cloudflare_zone.id
-  name     = var.cloudflare_zone.zone
+  name     = "@"
   type     = "MX"
   priority = 20
   value    = "in2-smtp.messagingengine.com"
@@ -28,7 +28,7 @@ resource "cloudflare_record" "domainkeys" {
   ])
 
   zone_id = var.cloudflare_zone.id
-  name    = "${each.value}._domainkey.${var.cloudflare_zone.zone}"
+  name    = "${each.value}._domainkey"
   type    = "CNAME"
   value   = "${each.value}.${var.cloudflare_zone.zone}.dkim.fmhosted.com"
 }
@@ -36,7 +36,7 @@ resource "cloudflare_record" "domainkeys" {
 # Client email auto-discovery
 resource "cloudflare_record" "srv_submission_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -52,7 +52,7 @@ resource "cloudflare_record" "srv_submission_tcp" {
 
 resource "cloudflare_record" "srv_imap_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -68,7 +68,7 @@ resource "cloudflare_record" "srv_imap_tcp" {
 
 resource "cloudflare_record" "srv_imaps_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -84,7 +84,7 @@ resource "cloudflare_record" "srv_imaps_tcp" {
 
 resource "cloudflare_record" "srv_pop3_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -100,7 +100,7 @@ resource "cloudflare_record" "srv_pop3_tcp" {
 
 resource "cloudflare_record" "srv_pop3s_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -116,7 +116,7 @@ resource "cloudflare_record" "srv_pop3s_tcp" {
 
 resource "cloudflare_record" "srv_jmap_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -133,7 +133,7 @@ resource "cloudflare_record" "srv_jmap_tcp" {
 # Client CardDAV auto-discovery
 resource "cloudflare_record" "srv_carddav_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -149,7 +149,7 @@ resource "cloudflare_record" "srv_carddav_tcp" {
 
 resource "cloudflare_record" "srv_carddavs_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -166,7 +166,7 @@ resource "cloudflare_record" "srv_carddavs_tcp" {
 # Client CalDAV auto-discovery
 resource "cloudflare_record" "srv_caldav_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {
@@ -182,7 +182,7 @@ resource "cloudflare_record" "srv_caldav_tcp" {
 
 resource "cloudflare_record" "srv_caldavs_tcp" {
   zone_id = var.cloudflare_zone.id
-  name    = var.cloudflare_zone.zone
+  name    = "@"
   type    = "SRV"
 
   data {

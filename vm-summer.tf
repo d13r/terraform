@@ -28,21 +28,21 @@ resource "hcloud_server" "summer" {
 
 resource "cloudflare_record" "summer_djm_me_A" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = "summer.djm.me"
+  name    = "summer"
   type    = "A"
   value   = hcloud_server.summer.ipv4_address
 }
 
 resource "cloudflare_record" "summer_djm_me_AAAA" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = "summer.djm.me"
+  name    = "summer"
   type    = "AAAA"
   value   = hcloud_server.summer.ipv6_address
 }
 
 resource "cloudflare_record" "summer_djm_me_SPF" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = "summer.djm.me"
+  name    = "summer"
   type    = "TXT"
   value   = "v=spf1 a -all"
 }
@@ -51,14 +51,14 @@ resource "cloudflare_record" "summer_private_djm_me_A" {
   for_each = {for network in hcloud_server.summer.network : network.network_id => network.ip}
 
   zone_id = cloudflare_zone.djm_me.id
-  name    = "summer.private.djm.me"
+  name    = "summer.private"
   type    = "A"
   value   = each.value
 }
 
 resource "cloudflare_record" "STAR_summer_djm_me_CNAME" {
   zone_id = cloudflare_zone.djm_me.id
-  name    = "*.summer.djm.me"
+  name    = "*.summer"
   type    = "CNAME"
   value   = "summer.djm.me"
 }
