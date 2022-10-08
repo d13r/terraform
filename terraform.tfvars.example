@@ -1,4 +1,12 @@
+# AWS
 # https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-west-1#/users
 # Apply the AdministratorAccess policy
 aws_iam_access_key = ""
 aws_iam_secret_key = ""
+
+# Cloudflare
+# https://dash.cloudflare.com/profile/api-tokens
+# Include:
+# - Account > Account Settings > Edit (All accounts)
+# - Zone > Zone > Edit (All zones)
+cloudflare_api_token = ""
