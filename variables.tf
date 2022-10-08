@@ -3,9 +3,16 @@ variable "aws_iam_access_key" {
 }
 
 variable "aws_iam_secret_key" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "cloudflare_api_token" {
-  type = string
+  type      = string
+  sensitive = true
+}
+
+variable "hcloud_token" {
+  type      = string
+  sensitive = true
 }

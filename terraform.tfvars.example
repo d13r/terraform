@@ -11,3 +11,7 @@ aws_iam_secret_key = ""
 # - Zone > DNS > Edit (All zones)
 # - Zone > Zone > Edit (All zones)
 cloudflare_api_token = ""
+
+# Hetzner
+# https://console.hetzner.cloud/projects/1411940/security/tokens
+hcloud_token = ""

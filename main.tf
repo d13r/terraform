@@ -11,6 +11,11 @@ terraform {
       version = "~> 3.0"
     }
 
+    hcloud = {
+      source = "hetznercloud/hcloud"
+      version = "~> 1.0"
+    }
+
   }
 }
 
@@ -22,4 +27,8 @@ provider "aws" {
 
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
+}
+
+provider "hcloud" {
+  token = var.hcloud_token
 }
