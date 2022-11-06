@@ -1,3 +1,4 @@
+# Server
 resource "hcloud_server" "seven" {
   name        = "seven.djm.me"
   server_type = "cpx11" # 2 vCPU (shared), 2 GB, 40 GB
@@ -26,6 +27,7 @@ resource "hcloud_server" "seven" {
   }
 }
 
+# DNS
 resource "cloudflare_record" "seven_djm_me_A" {
   zone_id = cloudflare_zone.djm_me.id
   name    = "seven"
@@ -61,4 +63,50 @@ resource "cloudflare_record" "STAR_seven_djm_me_CNAME" {
   name    = "*.seven"
   type    = "CNAME"
   value   = "seven.djm.me"
+}
+
+# SES
+resource "aws_iam_user" "ses_seven" {
+  name = "seven-ses-postfix-user"
+}
+
+resource "aws_iam_user_policy" "ses_seven" {
+  name = "seven-ses-postfix-policy"
+  user = aws_iam_user.ses_seven.name
+
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Sid      = "SystemNotifications"
+        Effect   = "Allow"
+        Action   = ["ses:SendRawEmail"]
+        Resource = "*"
+
+        Condition = {
+          IpAddress = {
+            "aws:SourceIp" = [
+              hcloud_server.seven.ipv4_address,
+              hcloud_server.seven.ipv6_address,
+            ]
+          }
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_access_key" "ses_seven" {
+  user = aws_iam_user.ses_seven.name
+}
+
+output "seven_ses_username" {
+  description = "The username to configure in Ansible for use in Postfix"
+  value = aws_iam_access_key.ses_seven.id
+}
+
+output "seven_ses_password" {
+  description = "The password to configure in Ansible for use in Postfix"
+  value = aws_iam_access_key.ses_seven.ses_smtp_password_v4
+  sensitive = true
 }
