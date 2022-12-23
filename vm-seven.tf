@@ -2,7 +2,7 @@
 resource "hcloud_server" "seven" {
   name        = "seven.djm.me"
   server_type = "cpx11" # 2 vCPU (shared), 2 GB, 40 GB
-  location    = "nbg1" # Nuremberg, Germany
+  location    = "nbg1"  # Nuremberg, Germany
   image       = "ubuntu-22.04"
 
   backups            = true
@@ -50,7 +50,7 @@ resource "cloudflare_record" "seven_djm_me_TXT_spf" {
 }
 
 resource "cloudflare_record" "seven_private_djm_me_A" {
-  for_each = {for network in hcloud_server.seven.network : network.network_id => network.ip}
+  for_each = { for network in hcloud_server.seven.network : network.network_id => network.ip }
 
   zone_id = cloudflare_zone.djm_me.id
   name    = "seven.private"
@@ -75,7 +75,7 @@ resource "aws_iam_user_policy" "ses_seven" {
   user = aws_iam_user.ses_seven.name
 
   policy = jsonencode({
-    Version   = "2012-10-17"
+    Version = "2012-10-17"
     Statement = [
       {
         Sid      = "SystemNotifications"
@@ -102,11 +102,11 @@ resource "aws_iam_access_key" "ses_seven" {
 
 output "seven_ses_username" {
   description = "The username to configure in Ansible for use in Postfix"
-  value = aws_iam_access_key.ses_seven.id
+  value       = aws_iam_access_key.ses_seven.id
 }
 
 output "seven_ses_password" {
   description = "The password to configure in Ansible for use in Postfix"
-  value = aws_iam_access_key.ses_seven.ses_smtp_password_v4
-  sensitive = true
+  value       = aws_iam_access_key.ses_seven.ses_smtp_password_v4
+  sensitive   = true
 }

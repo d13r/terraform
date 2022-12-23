@@ -12,7 +12,7 @@ terraform {
     }
 
     hcloud = {
-      source = "hetznercloud/hcloud"
+      source  = "hetznercloud/hcloud"
       version = "~> 1.0"
     }
 

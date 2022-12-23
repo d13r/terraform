@@ -3,7 +3,7 @@ resource "cloudflare_record" "djm_me_TXT_spf" {
   name    = "@"
   type    = "TXT"
   # Fastmail
-  value   = "v=spf1 include:spf.messagingengine.com -all"
+  value = "v=spf1 include:spf.messagingengine.com -all"
 }
 
 resource "cloudflare_record" "davejamesmiller_com_TXT_spf" {
@@ -11,7 +11,7 @@ resource "cloudflare_record" "davejamesmiller_com_TXT_spf" {
   name    = "@"
   type    = "TXT"
   # Fastmail, Google Workspace (legacy)
-  value   = "v=spf1 include:spf.messagingengine.com include:_spf.google.com -all"
+  value = "v=spf1 include:spf.messagingengine.com include:_spf.google.com -all"
 }
 
 resource "cloudflare_record" "dmarc_djm_me_TXT" {

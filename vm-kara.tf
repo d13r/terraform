@@ -30,7 +30,7 @@ resource "aws_iam_user_policy" "ses_kara" {
   user = aws_iam_user.ses_kara.name
 
   policy = jsonencode({
-    Version   = "2012-10-17"
+    Version = "2012-10-17"
     Statement = [
       {
         Sid      = "SystemNotifications"
@@ -57,11 +57,11 @@ resource "aws_iam_access_key" "ses_kara" {
 
 output "kara_ses_username" {
   description = "The username to configure in Ansible for use in Postfix"
-  value = aws_iam_access_key.ses_kara.id
+  value       = aws_iam_access_key.ses_kara.id
 }
 
 output "kara_ses_password" {
   description = "The password to configure in Ansible for use in Postfix"
-  value = aws_iam_access_key.ses_kara.ses_smtp_password_v4
-  sensitive = true
+  value       = aws_iam_access_key.ses_kara.ses_smtp_password_v4
+  sensitive   = true
 }

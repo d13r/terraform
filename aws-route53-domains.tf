@@ -21,7 +21,7 @@ resource "aws_route53domains_registered_domain" "davejamesmiller_com" {
 }
 
 resource "aws_route53domains_registered_domain" "d13r_uk" {
-  domain_name = "d13r.uk"
+  domain_name   = "d13r.uk"
   transfer_lock = false # Not supported for UK domains
 
   name_server {
