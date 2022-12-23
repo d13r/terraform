@@ -1,6 +1,6 @@
 # This is legacy, so it's not worth me setting up the Google Workspace provider just to fetch the key automatically
 # https://admin.google.com/u/1/ac/apps/gmail/authenticateemail
-resource "cloudflare_record" "google_domainkey_davejamesmiller_com" {
+resource "cloudflare_record" "google_domainkey_davejamesmiller_com_TXT" {
   zone_id = cloudflare_zone.davejamesmiller_com.id
   name    = "google._domainkey"
   type    = "TXT"
