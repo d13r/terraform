@@ -103,3 +103,11 @@ module "rainbow_vm-indigo" {
   number          = 15
   name            = "indigo"
 }
+
+resource "cloudflare_record" "rainbox_djm_me" {
+  zone_id = data.cloudflare_zone.djm_me.zone_id
+  name    = "rainbox"
+  type    = "CNAME"
+  value   = "u364797.your-storagebox.de"
+  comment = "Managed by github.com/d13r/terraform"
+}
