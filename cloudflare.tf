@@ -1,6 +1,6 @@
-#data "cloudflare_zone" "bin-cli_com" {
-#  name = "bin-cli.com"
-#}
+data "cloudflare_zone" "bin-cli_com" {
+  name = "bin-cli.com"
+}
 
 #data "cloudflare_zone" "d13r_uk" {
 #  name = "d13r.uk"
