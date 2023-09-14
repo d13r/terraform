@@ -1,3 +1,11 @@
+module "rainbow_vm-rainbow" {
+  # This one is the host, not a VM, but it has the same DNS records
+  source          = "./modules/rainbow_vm"
+  cloudflare_zone = data.cloudflare_zone.djm_me
+  number          = 1
+  name            = "rainbow"
+}
+
 module "rainbow_vm-red" {
   source          = "./modules/rainbow_vm"
   cloudflare_zone = data.cloudflare_zone.djm_me
