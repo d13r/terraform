@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+if ! aws --profile d13r sts get-caller-identity &>/dev/null; then
+    bin/login
+    echo
+fi

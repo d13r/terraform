@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+aws --profile d13r sso logout
+
+echo 'Logged out of AWS CLI. To log out in the browser, visit:'
+echo 'https://d13r.awsapps.com/start#/signout'
+echo 'https://console.aws.amazon.com/console/logout!doLogout'

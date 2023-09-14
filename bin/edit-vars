@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Config
+s3_file='s3://d13r-terraform/d13r.tfvars'
+
+# Make sure we're logged into AWS
+"$(dirname "$0")"/../libexec/auto-login
+
+# Create temp file
+umask 077
+temp_file=$(mktemp --tmpdir d13r.XXXXXXXXXX.tfvars)
+
+# Make sure the temp file is securely deleted when the script exits
+cleanup() {
+    shred -u "$temp_file"
+    exit
+}
+
+trap cleanup INT TERM EXIT
+
+# Copy the existing file, if it exists, or the template otherwise
+if aws --profile d13r s3 ls "$s3_file" &>/dev/null; then
+    aws --profile d13r s3 cp "$s3_file" "$temp_file"
+fi
+
+# Compute the checksum so we can tell whether the file was modified
+old_md5=$(md5sum "$temp_file")
+
+# Open it in an editor
+"${EDITOR-vim}" "$temp_file"
+
+# Check whether anything changed
+new_md5=$(md5sum "$temp_file")
+
+if [[ $new_md5 = $old_md5 ]]; then
+    echo 'No changes.'
+    exit
+fi
+
+# Upload the new file
+aws --profile d13r s3 cp "$temp_file" "$s3_file"

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Make sure we're logged into AWS
+"$(dirname "$0")"/../libexec/auto-login
+
+# Helper
+in_array()
+{
+    local needle="$1"
+    shift
+
+    local value
+    for value in "$@"; do
+        if [[ $value == $needle ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# Automatically download the var file when needed
+# Unfortunately this isn't valid for all subcommands, so we have to whitelist them
+if in_array "${1-}" apply destroy plan; then
+    command=$1
+    shift
+    exec terraform "$command" -var-file=<(aws --profile d13r s3 cp s3://d13r-terraform/d13r.tfvars -) "$@"
+fi
+
+# Otherwise just run Terraform
+exec terraform "$@"
