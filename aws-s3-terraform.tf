@@ -11,7 +11,7 @@ resource aws_s3_bucket_versioning "terraform" {
   }
 }
 
-resource aws_s3_bucket_lifecycle_configuration "terraform_delete-noncurrent-versions-after-90-days" {
+resource aws_s3_bucket_lifecycle_configuration "terraform" {
   bucket = data.aws_s3_bucket.terraform.bucket
 
   rule {
@@ -25,7 +25,7 @@ resource aws_s3_bucket_lifecycle_configuration "terraform_delete-noncurrent-vers
 }
 
 # Make sure the files can't be made public, since they contain sensitive data
-resource "aws_s3_bucket_public_access_block" "terraform_state" {
+resource "aws_s3_bucket_public_access_block" "terraform" {
   bucket                  = data.aws_s3_bucket.terraform.id
   block_public_acls       = true
   block_public_policy     = true
