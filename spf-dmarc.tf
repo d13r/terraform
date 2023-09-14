@@ -10,7 +10,7 @@ resource "cloudflare_record" "djm_me-SPF" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
   name    = "@"
   type    = "TXT"
-  value   = "v=spf1 ${module.fastmail_domain-djm_me.spf_string} include:amazonses.com -all"
+  value   = "v=spf1 ${module.fastmail_domain-djm_me.spf_string} ${module.aws_ses_domain-djm_me.spf_string} -all"
   comment = "Managed by github.com/d13r/terraform"
 }
 
