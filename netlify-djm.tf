@@ -3,7 +3,7 @@ resource "cloudflare_record" "djm_me" {
   name    = "@"
   type    = "CNAME" # Flattened
   value   = "djm.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "www_djm_me" {
@@ -11,7 +11,7 @@ resource "cloudflare_record" "www_djm_me" {
   name    = "www"
   type    = "CNAME"
   value   = "djm.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "davejamesmiller_com" {
@@ -19,7 +19,7 @@ resource "cloudflare_record" "davejamesmiller_com" {
   name    = "@"
   type    = "CNAME" # Flattened
   value   = "djm.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "www_davejamesmiller_com" {
@@ -27,5 +27,5 @@ resource "cloudflare_record" "www_davejamesmiller_com" {
   name    = "www"
   type    = "CNAME"
   value   = "djm.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

@@ -11,3 +11,7 @@ variable "cloudflare_zone" {
     zone_id = string
   })
 }
+
+variable "managed_comment" {
+  type = string
+}

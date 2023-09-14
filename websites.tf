@@ -4,7 +4,7 @@ resource "cloudflare_record" "c_djm_me" {
   name    = "c"
   type    = "CNAME"
   value   = "red.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # Notes
@@ -13,7 +13,7 @@ resource "cloudflare_record" "notes_djm_me" {
   name    = "notes"
   type    = "CNAME"
   value   = "red.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # Photos
@@ -22,7 +22,7 @@ resource "cloudflare_record" "photos_djm_me" {
   name    = "photos"
   type    = "CNAME"
   value   = "red.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # Temp
@@ -31,5 +31,5 @@ resource "cloudflare_record" "temp_djm_me" {
   name    = "temp"
   type    = "CNAME"
   value   = "red.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

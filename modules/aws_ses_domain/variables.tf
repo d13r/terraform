@@ -4,3 +4,7 @@ variable "cloudflare_zone" {
     name    = string
   })
 }
+
+variable "managed_comment" {
+  type = string
+}

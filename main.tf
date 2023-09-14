@@ -28,7 +28,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      ManagedBy = "github.com/d13r/terraform"
+      ManagedBy = local.managed_by
     }
   }
 }

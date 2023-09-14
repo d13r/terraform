@@ -18,7 +18,7 @@ resource "cloudflare_record" "mx" {
   type     = "MX"
   priority = each.key
   value    = each.value
-  comment  = "Managed by github.com/d13r/terraform"
+  comment  = var.managed_comment
 }
 
 resource "cloudflare_record" "domainkey" {
@@ -28,14 +28,14 @@ resource "cloudflare_record" "domainkey" {
   name    = "${each.value}._domainkey"
   type    = "CNAME"
   value   = "${each.value}.${var.cloudflare_zone.name}.dkim.fmhosted.com"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 resource "cloudflare_record" "caldavs_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_caldavs._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -52,7 +52,7 @@ resource "cloudflare_record" "carddavs_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_carddavs._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -69,7 +69,7 @@ resource "cloudflare_record" "imaps_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_imaps._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -86,7 +86,7 @@ resource "cloudflare_record" "jmap_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_jmap._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -103,7 +103,7 @@ resource "cloudflare_record" "pop3s_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_pop3s._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -120,7 +120,7 @@ resource "cloudflare_record" "submission_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_submission._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name
@@ -139,7 +139,7 @@ resource "cloudflare_record" "unsecured_tcp_SRV" {
   zone_id = var.cloudflare_zone.zone_id
   name    = "_${each.value}._tcp"
   type    = "SRV"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 
   data {
     name     = var.cloudflare_zone.name

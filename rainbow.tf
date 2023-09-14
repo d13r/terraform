@@ -4,6 +4,7 @@ module "rainbow_vm-rainbow" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 1
   name            = "rainbow"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-red" {
@@ -11,6 +12,7 @@ module "rainbow_vm-red" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 2
   name            = "red"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-orange" {
@@ -18,6 +20,7 @@ module "rainbow_vm-orange" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 3
   name            = "orange"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-yellow" {
@@ -25,6 +28,7 @@ module "rainbow_vm-yellow" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 4
   name            = "yellow"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-green" {
@@ -32,6 +36,7 @@ module "rainbow_vm-green" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 5
   name            = "green"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-cyan" {
@@ -39,6 +44,7 @@ module "rainbow_vm-cyan" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 6
   name            = "cyan"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-blue" {
@@ -46,6 +52,7 @@ module "rainbow_vm-blue" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 7
   name            = "blue"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-violet" {
@@ -53,6 +60,7 @@ module "rainbow_vm-violet" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 8
   name            = "violet"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-white" {
@@ -60,6 +68,7 @@ module "rainbow_vm-white" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 9
   name            = "white"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-black" {
@@ -67,6 +76,7 @@ module "rainbow_vm-black" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 10
   name            = "black"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-gold" {
@@ -74,6 +84,7 @@ module "rainbow_vm-gold" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 11
   name            = "gold"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-silver" {
@@ -81,6 +92,7 @@ module "rainbow_vm-silver" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 12
   name            = "silver"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-bronze" {
@@ -88,6 +100,7 @@ module "rainbow_vm-bronze" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 13
   name            = "bronze"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-magenta" {
@@ -95,6 +108,7 @@ module "rainbow_vm-magenta" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 14
   name            = "magenta"
+  managed_comment = local.managed_comment
 }
 
 module "rainbow_vm-indigo" {
@@ -102,6 +116,7 @@ module "rainbow_vm-indigo" {
   cloudflare_zone = data.cloudflare_zone.djm_me
   number          = 15
   name            = "indigo"
+  managed_comment = local.managed_comment
 }
 
 resource "cloudflare_record" "rainbox_djm_me" {
@@ -109,5 +124,5 @@ resource "cloudflare_record" "rainbox_djm_me" {
   name    = "rainbox"
   type    = "CNAME"
   value   = "u364797.your-storagebox.de"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

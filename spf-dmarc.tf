@@ -3,7 +3,7 @@ resource "cloudflare_record" "dmarc_djm_me" {
   name    = "_dmarc"
   type    = "TXT"
   value   = "v=DMARC1; p=reject; sp=reject; adkim=r; aspf=r; pct=100; rua=mailto:re+mc8p5fxsgcw@dmarc.postmarkapp.com;"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "djm_me-SPF" {
@@ -11,7 +11,7 @@ resource "cloudflare_record" "djm_me-SPF" {
   name    = "@"
   type    = "TXT"
   value   = "v=spf1 ${module.fastmail_domain-djm_me.spf_string} ${module.aws_ses_domain-djm_me.spf_string} -all"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "dmarc_davejamesmiller_com" {
@@ -19,7 +19,7 @@ resource "cloudflare_record" "dmarc_davejamesmiller_com" {
   name    = "_dmarc"
   type    = "TXT"
   value   = "v=DMARC1; p=reject; sp=reject; adkim=r; aspf=r; pct=100; rua=mailto:re+jlelgwbdzgu@dmarc.postmarkapp.com;"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "davejamesmiller_com-SPF" {
@@ -27,5 +27,5 @@ resource "cloudflare_record" "davejamesmiller_com-SPF" {
   name    = "@"
   type    = "TXT"
   value   = "v=spf1 ${module.fastmail_domain-davejamesmiller_com.spf_string} include:_spf.google.com -all"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

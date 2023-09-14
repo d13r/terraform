@@ -12,7 +12,7 @@ resource "cloudflare_record" "public_A_record" {
   name    = var.name
   type    = "A"
   value   = "88.99.150.13"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 resource "cloudflare_record" "public_AAAA_record" {
@@ -20,7 +20,7 @@ resource "cloudflare_record" "public_AAAA_record" {
   name    = var.name
   type    = "AAAA"
   value   = format("2a01:4f8:10a:2e4b:%x::", var.number)
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 resource "cloudflare_record" "private_A_record" {
@@ -28,7 +28,7 @@ resource "cloudflare_record" "private_A_record" {
   name    = "${var.name}.private"
   type    = "A"
   value   = format("192.168.150.%d", var.number)
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 resource "cloudflare_record" "private_AAAA_record" {
@@ -36,5 +36,5 @@ resource "cloudflare_record" "private_AAAA_record" {
   name    = "${var.name}.private"
   type    = "AAAA"
   value   = format("2a01:4f8:10a:2e4b:%x::", var.number)
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }

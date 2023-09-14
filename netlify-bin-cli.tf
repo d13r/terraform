@@ -3,7 +3,7 @@ resource "cloudflare_record" "bin-cli_com" {
   name    = "@"
   type    = "CNAME" # Flattened
   value   = "bin-cli.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "www_bin-cli_com" {
@@ -11,5 +11,5 @@ resource "cloudflare_record" "www_bin-cli_com" {
   name    = "www"
   type    = "CNAME"
   value   = "bin-cli.netlify.app"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

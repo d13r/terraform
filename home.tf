@@ -4,7 +4,7 @@ resource "cloudflare_record" "home_djm_me" {
   name    = "home"
   type    = "A"
   value   = "84.92.51.193"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # Raspberry Pi
@@ -13,7 +13,7 @@ resource "cloudflare_record" "pi_djm_me" {
   name    = "pi"
   type    = "A"
   value   = "192.168.1.91"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "STAR_pi_djm_me" {
@@ -21,7 +21,7 @@ resource "cloudflare_record" "STAR_pi_djm_me" {
   name    = "*.pi"
   type    = "CNAME"
   value   = "pi.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # Old desktop
@@ -30,7 +30,7 @@ resource "cloudflare_record" "maria_djm_me" {
   name    = "maria"
   type    = "A"
   value   = "192.168.1.154"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 resource "cloudflare_record" "STAR_maria_djm_me" {
@@ -38,7 +38,7 @@ resource "cloudflare_record" "STAR_maria_djm_me" {
   name    = "*.maria"
   type    = "CNAME"
   value   = "maria.djm.me"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }
 
 # NAS
@@ -47,5 +47,5 @@ resource "cloudflare_record" "daydreamer-nas_djm_me" {
   name    = "daydreamer-nas"
   type    = "A"
   value   = "192.168.1.144"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = local.managed_comment
 }

@@ -1,6 +1,7 @@
 module "aws_ses_domain-djm_me" {
   source          = "./modules/aws_ses_domain"
   cloudflare_zone = data.cloudflare_zone.djm_me
+  managed_comment = local.managed_comment
 }
 
 # For sending to while in sandbox

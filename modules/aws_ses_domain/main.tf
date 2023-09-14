@@ -41,7 +41,7 @@ resource "cloudflare_record" "domainkey" {
   name    = "${element(aws_ses_domain_dkim.djm_me.dkim_tokens, count.index)}._domainkey"
   type    = "CNAME"
   value   = "${element(aws_ses_domain_dkim.djm_me.dkim_tokens, count.index)}.dkim.amazonses.com"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 # Configure the return path subdomain
@@ -51,7 +51,7 @@ resource "cloudflare_record" "mail_from_mx" {
   type     = "MX"
   priority = 10
   value    = "feedback-smtp.${data.aws_region.current.name}.amazonses.com"
-  comment  = "Managed by github.com/d13r/terraform"
+  comment  = var.managed_comment
 }
 
 resource "cloudflare_record" "mail_from_txt" {
@@ -59,7 +59,7 @@ resource "cloudflare_record" "mail_from_txt" {
   name    = aws_ses_domain_mail_from.ses.mail_from_domain
   type    = "TXT"
   value   = "v=spf1 include:amazonses.com -all"
-  comment = "Managed by github.com/d13r/terraform"
+  comment = var.managed_comment
 }
 
 # Wait for verification to complete
