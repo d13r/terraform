@@ -44,3 +44,7 @@ else
     aws --profile d13r configure set sso_role_name AdministratorAccess
     echo 'Done.'
 fi
+
+echo
+echo "${LCYAN}${BOLD}Initialising Terraform ...${RESET}"
+bin/terraform init

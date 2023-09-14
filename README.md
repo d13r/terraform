@@ -15,7 +15,7 @@ cd terraform
 bin/setup
 
 # Run
-bin/terraform
+bin/terraform apply
 
 # Optional
 bin/logout
