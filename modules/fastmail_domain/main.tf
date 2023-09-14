@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-      version = "~> 4.0"
-    }
-  }
-}
-
 resource "cloudflare_record" "mx" {
   for_each = {
     10 : "in1-smtp.messagingengine.com",
