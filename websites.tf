@@ -24,12 +24,3 @@ resource "cloudflare_record" "photos_djm_me" {
   value   = "red.djm.me"
   comment = local.managed_comment
 }
-
-# Temp
-resource "cloudflare_record" "temp_djm_me" {
-  zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "temp"
-  type    = "CNAME"
-  value   = "red.djm.me"
-  comment = local.managed_comment
-}
