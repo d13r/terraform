@@ -126,3 +126,20 @@ resource "cloudflare_record" "rainbox_djm_me" {
   value   = "u364797.your-storagebox.de"
   comment = local.managed_comment
 }
+
+# Services
+resource "cloudflare_record" "dhcp_djm_me" {
+  zone_id = data.cloudflare_zone.djm_me.zone_id
+  name    = "dhcp"
+  type    = "CNAME"
+  value   = "orange.djm.me"
+  comment = local.managed_comment
+}
+
+resource "cloudflare_record" "puppet_djm_me" {
+  zone_id = data.cloudflare_zone.djm_me.zone_id
+  name    = "puppet"
+  type    = "CNAME"
+  value   = "cyan.djm.me"
+  comment = local.managed_comment
+}
