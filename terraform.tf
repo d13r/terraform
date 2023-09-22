@@ -11,6 +11,11 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "~> 4.0"
     }
+
+    hcloud = {
+      source  = "hetznercloud/hcloud"
+      version = "1.43.0"
+    }
   }
 
   backend "s3" {
