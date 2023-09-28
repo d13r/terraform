@@ -43,7 +43,7 @@ resource "hcloud_server" "holly" {
   ssh_keys     = [hcloud_ssh_key.dave.id]
 
   lifecycle {
-    ignore_changes = [ssh_keys]
+    ignore_changes = [image, ssh_keys]
   }
 }
 
