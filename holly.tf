@@ -37,7 +37,7 @@ resource "hcloud_server" "holly" {
   backups      = true
   firewall_ids = [hcloud_firewall.holly.id]
   image        = "ubuntu-22.04"
-  location     = "nbg1" # Nuremberg, Germany
+  location     = "fsn1" # Falkenstein, Germany
   name         = "holly.djm.me"
   server_type  = "cpx11" # AMD, 2vCPU, 2GB RAM, 40 GB SSD
   ssh_keys     = [hcloud_ssh_key.dave.id]
