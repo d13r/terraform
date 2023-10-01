@@ -72,7 +72,7 @@ resource "hcloud_server" "holly" {
   image        = "ubuntu-22.04"
   datacenter   = local.holly_datacenter
   name         = "holly.djm.me"
-  server_type  = "cpx11" # AMD, 2vCPU, 2GB RAM, 40 GB SSD
+  server_type  = "cx21" # Intel, 2vCPU, 4GB RAM, 40 GB SSD
   ssh_keys     = [hcloud_ssh_key.dave.id]
 
   lifecycle {
