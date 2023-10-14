@@ -1,12 +1,3 @@
-# Router
-resource "cloudflare_record" "home_djm_me" {
-  zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "home"
-  type    = "A"
-  value   = "84.92.51.193"
-  comment = local.managed_comment
-}
-
 # Raspberry Pi
 resource "cloudflare_record" "pi_djm_me" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
