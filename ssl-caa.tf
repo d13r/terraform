@@ -49,29 +49,3 @@ resource "cloudflare_record" "davejamesmiller_com-CAA-iodef" {
     value = "mailto:d@djm.me"
   }
 }
-
-resource "cloudflare_record" "bin-cli_com-CAA-issue" {
-  zone_id = data.cloudflare_zone.bin-cli_com.zone_id
-  name    = "@"
-  type    = "CAA"
-  comment = local.managed_comment
-
-  data {
-    flags = "0"
-    tag   = "issue"
-    value = "letsencrypt.org"
-  }
-}
-
-resource "cloudflare_record" "bin-cli_com-CAA-iodef" {
-  zone_id = data.cloudflare_zone.bin-cli_com.zone_id
-  name    = "@"
-  type    = "CAA"
-  comment = local.managed_comment
-
-  data {
-    flags = "0"
-    tag   = "iodef"
-    value = "mailto:d@djm.me"
-  }
-}
