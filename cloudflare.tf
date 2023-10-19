@@ -1,7 +1,3 @@
-#data "cloudflare_zone" "d13r_uk" {
-#  name = "d13r.uk"
-#}
-
 data "cloudflare_zone" "davejamesmiller_com" {
   name = "davejamesmiller.com"
 }
