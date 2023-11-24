@@ -6,44 +6,35 @@ RESET=$'\e[0m'
 BOLD=$'\e[1m'
 LCYAN=$'\e[96m'
 
-echo "${LCYAN}${BOLD}Installing Terraform...${RESET}"
-if command -v terraform &>/dev/null; then
-    echo "Already installed: $(terraform -version | head -1)"
-else
-    # https://developer.hashicorp.com/terraform/downloads
-    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
-    sudo apt update
-    sudo apt install terraform
-fi
+echo "${LCYAN}${BOLD}Installing/upgrading Terraform...${RESET}"
+# https://developer.hashicorp.com/terraform/downloads
+curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o- | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
+sudo apt update
+sudo apt install terraform
+terraform -version | head -1
 
 echo
-echo "${LCYAN}${BOLD}Installing AWS CLI...${RESET}"
-if command -v aws &>/dev/null; then
-    echo "Already installed: $(aws --version)"
-else
-    # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-    (
-        cd /tmp
-        curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'
-        unzip awscliv2.zip
-        sudo ./aws/install
-        rm -rf awscliv2.zip aws
-    )
-fi
+echo "${LCYAN}${BOLD}Installing/upgrading AWS CLI...${RESET}"
+# https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+(
+    cd /tmp
+    rm -rf awscliv2.zip aws
+    curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip > awscliv2.zip
+    unzip awscliv2.zip
+    sudo ./aws/install --update
+    rm -rf awscliv2.zip aws
+)
+aws --version
 
 echo
 echo "${LCYAN}${BOLD}Configuring AWS CLI...${RESET}"
-if [[ -f $HOME/.aws/config ]] && fgrep -q "[profile d13r]" $HOME/.aws/config; then
-    echo 'Already configured.'
-else
-    aws --profile d13r configure set region eu-west-1
-    aws --profile d13r configure set sso_region eu-west-1
-    aws --profile d13r configure set sso_start_url https://d13r.awsapps.com/start
-    aws --profile d13r configure set sso_account_id 956547487034
-    aws --profile d13r configure set sso_role_name AdministratorAccess
-    echo 'Done.'
-fi
+aws --profile d13r configure set region eu-west-1
+aws --profile d13r configure set sso_region eu-west-1
+aws --profile d13r configure set sso_start_url https://d13r.awsapps.com/start
+aws --profile d13r configure set sso_account_id 956547487034
+aws --profile d13r configure set sso_role_name AdministratorAccess
+echo 'Done.'
 
 echo
 echo "${LCYAN}${BOLD}Initialising Terraform ...${RESET}"
