@@ -1,42 +1,41 @@
-# Raspberry Pi
+# home.djm.me (public IP) managed by DynDNS client
+
+# 10.0.0.x for static physical devices
+# 10.0.1.x for static virtual machines
+# 10.0.2.x for DHCP devices
+
+# Router
+resource "cloudflare_record" "router_djm_me" {
+  zone_id = data.cloudflare_zone.djm_me.zone_id
+  name    = "router"
+  type    = "A"
+  value   = "10.0.0.1"
+  comment = local.managed_comment
+}
+
+# Pi-hole, PiVPN
 resource "cloudflare_record" "pi_djm_me" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
   name    = "pi"
   type    = "A"
-  value   = "192.168.1.91"
+  value   = "10.0.0.2"
   comment = local.managed_comment
 }
 
-resource "cloudflare_record" "STAR_pi_djm_me" {
+# Proxmox server
+resource "cloudflare_record" "proxmox_djm_me" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "*.pi"
-  type    = "CNAME"
-  value   = "pi.djm.me"
-  comment = local.managed_comment
-}
-
-# Old desktop
-resource "cloudflare_record" "maria_djm_me" {
-  zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "maria"
+  name    = "proxmox"
   type    = "A"
-  value   = "192.168.1.154"
-  comment = local.managed_comment
-}
-
-resource "cloudflare_record" "STAR_maria_djm_me" {
-  zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "*.maria"
-  type    = "CNAME"
-  value   = "maria.djm.me"
+  value   = "10.0.0.3"
   comment = local.managed_comment
 }
 
 # NAS
-resource "cloudflare_record" "daydreamer-nas_djm_me" {
+resource "cloudflare_record" "nas_djm_me" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "daydreamer-nas"
+  name    = "nas"
   type    = "A"
-  value   = "192.168.1.144"
+  value   = "10.0.0.4"
   comment = local.managed_comment
 }
