@@ -23,9 +23,9 @@ resource "cloudflare_record" "pi_djm_me" {
 }
 
 # Proxmox server
-resource "cloudflare_record" "proxmox_djm_me" {
+resource "cloudflare_record" "pve_djm_me" {
   zone_id = data.cloudflare_zone.djm_me.zone_id
-  name    = "proxmox"
+  name    = "pve"
   type    = "A"
   value   = "10.0.0.3"
   comment = local.managed_comment
