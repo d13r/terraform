@@ -1,6 +1,6 @@
 # 10.0.0.x for static physical devices
 # 10.0.1.x for static virtual machines
-# 10.0.2.x for DHCP devices
+# 10.0.2.x for DHCP
 
 # Router
 resource "cloudflare_record" "router_djm_me" {
